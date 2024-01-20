@@ -8,25 +8,31 @@ const int m1Enable = 10;
 const int m2Enable = 11;
 int m1Speed = 0;
 int m2Speed = 0;
-// increase kp’s value and see what happens
+
+// pid
 float kp = 20;
 float ki = 0;
 float kd = 4;
 int p = 1;
 int i = 0;
 int d = 1;
+
+// adjust for more agressive angles
 int bigAngleTh = 20;
 int adjustValue = 30;
+
 int error = 0;
 int lastError = 0;
 const int maxSpeed = 255;
 const int minSpeed = -255;
 const int baseSpeed = 255;
+
 QTRSensors qtr;
 const int sensorCount = 6;
 int sensorValues[sensorCount];
 int sensors[sensorCount] = { 0, 0, 0, 0, 0, 0 };
 
+// calibration
 unsigned long timeToChangeDir = 500;
 unsigned long lastTime = 0;
 bool engineDir = true;
@@ -53,10 +59,6 @@ void autocalibrate() {
     } else {
         setMotorSpeed(-m1CalibrationSpeed, 0);
     }
-    // if(millis() - lastTime > timeToChangeDir) {
-    //     engineDir = !engineDir;
-    //     lastTime = millis();
-    // }
 }
 
 void setup() {
@@ -75,13 +77,6 @@ void setup() {
     Serial.begin(115200);
     for (uint16_t i = 0; i < 500; i++) {
         qtr.calibrate();
-        // qtr.read(sensorValues);
-        // for(int i = 0; i < sensorCount; i++) {
-        //     Serial.print(sensorValues[i]);
-        //     Serial.print(" ");
-        // }
-        // Serial.println();
-
         autocalibrate();
     }
     digitalWrite(LED_BUILTIN, LOW);
@@ -98,20 +93,9 @@ void loop() {
 
     setMotorSpeed(m1Speed, m2Speed);
 
-    Serial.print(" M1: ");
-    Serial.print(m1Speed);
-    Serial.print( " M2: ");
-    Serial.println(m2Speed);
-}
 // calculate PID value based on error, kp, kd, ki, p, i and d.
 void pidControl(float kp, float ki, float kd) {
     int error = map(qtr.readLineBlack(sensorValues), 0, 5000, -50, 50);
-
-    // for(int i = 0; i < sensorCount; i++) {
-    //     Serial.print(sensorValues[i]);
-    //     Serial.print(" ");
-    // }
-    // Serial.println();
 
     p = error;
     i = i + error;
@@ -133,11 +117,8 @@ void pidControl(float kp, float ki, float kd) {
     }
     lastError = error;
 }
-// each arguments takes values between -255 and 255. The negative values represent the motor speed in reverse.
+
 void setMotorSpeed(int motor1Speed, int motor2Speed) {
-    // remove comment if any of the motors are going in reverse
-    // motor1Speed = -motor1Speed
-    // motor2Speed = -motor2Speed;
     if (motor1Speed == 0) {
         digitalWrite(m11Pin, LOW);
         digitalWrite(m12Pin, LOW);
