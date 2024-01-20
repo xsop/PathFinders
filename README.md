@@ -1,5 +1,8 @@
 # Pathfinders' Line follower - Introduction To Robotics (2023-2024)
 
+Cloned repo: [ralexgt/Pathfinders-Linefollower](https://github.com/ralexgt/Pathfinders-Linefollower/blob/main/code/linefollower.ino)
+</br>
+
 <details>
 <summary>  Project description 📚</summary>
 &nbsp;&nbsp;&nbsp;&nbsp; We were asked to design, build and code a line follower during a hackathon held by our Introduction To Robotics professor at the University of Bucharest. Teams consisted of around 3 students and we had to build a good enough line follower, capable of completing a predefined course in a limited time.
