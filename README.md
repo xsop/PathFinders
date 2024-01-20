@@ -1,4 +1,4 @@
-# Pathfinders' Linefollower - Introduction To Robotics (2023-2024)
+# Pathfinders' Line follower - Introduction To Robotics (2023-2024)
 
 <details>
 <summary>  Project description 📚</summary>
@@ -68,7 +68,7 @@ Time: 19:359s &nbsp; - &nbsp; [Fastest lap [YouTube]](https://youtu.be/dyZ4lOrvL
   <blockquote>
   <details><summary>&nbsp;&nbsp;&nbsp;&nbsp;Code: </summary>
 
-[Code file]()
+[Code file](https://github.com/ralexgt/Pathfinders-Linefollower/blob/main/code/linefollower.ino)
 
   </details>
   </blockquote>
