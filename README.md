@@ -1,6 +1,6 @@
 # Pathfinders' Line follower - Introduction To Robotics (2023-2024)
 
-Cloned repo: [ralexgt/Pathfinders-Linefollower](https://github.com/ralexgt/Pathfinders-Linefollower/blob/main/code/linefollower.ino)
+Cloned repo: [ralexgt/Pathfinders-Linefollower](https://github.com/ralexgt/Pathfinders-Linefollower/)
 </br>
 
 <details>
